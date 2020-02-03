@@ -1,6 +1,5 @@
 fixes:
   - "ros_ws/src/rcpputils/::"
 ignore:
-  - "ros_ws/test"
+  - "ros_ws/src/rcpputils/test"
   - "test_*.cpp"
-  
