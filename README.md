@@ -26,3 +26,6 @@ In `rcpputils/find_library.hpp`:
     implementations.
     *   For dynamically loading user-defind plugins in C++, please use
         [`pluginlib`](https://github.com/ros/pluginlib) instead.
+
+## Code coverage for this repo
+[![codecov](https://codecov.io/gh/j-rivero/rcpputils/branch/master/graph/badge.svg)](https://codecov.io/gh/j-rivero/rcpputils)
