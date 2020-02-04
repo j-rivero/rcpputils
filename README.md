@@ -1,6 +1,6 @@
 # rcpputils: ROS 2 C++ Utilities
 
-`rcpputils` is a C++ API consisting of macros, functions, and data structures intended for use throughout the ROS 2 codebase
+`rcpputils` is a C++ API consisting of macros, functions, and data structures intended for use throughout the ROS 2 codebase. [![codecov](https://codecov.io/gh/j-rivero/rcpputils/branch/master/graph/badge.svg)](https://codecov.io/gh/j-rivero/rcpputils)
 
 This package currently contains:
 * Clang thread safety annotation macros
