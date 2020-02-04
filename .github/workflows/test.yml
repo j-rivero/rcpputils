@@ -16,7 +16,7 @@ jobs:
       - uses: ros-tooling/setup-ros@0.0.13
         # with:
         #  required-ros-distributions: eloquent
-      - uses: j-rivero/action-ros2-ci@use_test_filter
+      - uses: j-rivero/action-ros-ci@use_test_filter
         with:
           package-name: rcpputils
           colcon-mixin-name: coverage-gcc
