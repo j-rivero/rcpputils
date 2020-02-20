@@ -1,4 +1,4 @@
-name: Test rclcpp coverage
+name: Test rcpputils coverage
 on:
   pull_request:
   push:
@@ -16,11 +16,20 @@ jobs:
       - uses: ros-tooling/setup-ros@0.0.13
         # with:
         #  required-ros-distributions: eloquent
-      - uses: j-rivero/action-ros-ci@use_test_filter
+      - name: generete lcov config file (disable branch, function)
+        id: lcovrc_file
+        run: |
+            LCOVRC_FILE="/tmp/lcovrc"
+            echo -e 'geninfo_auto_base=1\ngenhtml_num_spaces = 2\ngenhtml_legend = 1\ngenhtml_function_coverage = 0\ngenhtml_branch_coverage = 0\ngeninfo_external = 0\nlcov_quiet = 1\nlcov_function_coverage = 0\nlcov_branch_coverage = 0\nlcov_follow = 1\n' > ${LCOVRC_FILE}
+            cat ${LCOVRC_FILE}
+            echo "::set-output name=LCOVRC_FILE::${LCOVRC_FILE}"
+      - uses: j-rivero/action-ros-ci@add_initial_lcov_file
         with:
           package-name: rcpputils
           colcon-mixin-name: coverage-gcc
           colcon-mixin-repository: https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
+          coverage-ignore-pattern: "*/test/*"
+          coverage-config-file: "${{ steps.lcovrc_file.outputs.LCOVRC_FILE }}"
       - uses: codecov/codecov-action@master
         # Prevent being rate limited by only reporting coverage from the Ubuntu
         # build.
